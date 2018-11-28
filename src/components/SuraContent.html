@@ -1,0 +1,46 @@
+<ol class="ayas" start={start} style={style}>
+  {#each ayas as aya}
+    <li>{aya.text}</li>
+  {/each}
+</ol>
+
+<script>
+  //import svg from './Aya.svg';
+  export default {
+    computed: {
+      start: function(props){
+        return props.ayas[0].aya
+      },
+      style: function(props){
+        return `counter-reset: section ${props.start - 1};`;
+      }
+    }
+  }
+</script>
+
+<style>
+  .ayas {
+    padding: 0;
+    margin: 0;
+    font-size: 150%;
+    line-height: 300%;
+    counter-reset: section;
+  }
+
+  .ayas li {
+    display: inline;
+    border-bottom: 1px dotted #e5bea1;
+    padding: 1em 0;
+  }
+
+  .ayas li::after {
+    counter-increment: section;
+    content: counter(section, arabic-indic);
+    margin: 0 0.5em;
+    width: 2em;
+    display: inline-block;
+    text-align: center;
+    background: url('resources/aya.svg') 50% 50% no-repeat;
+    font-size: 0.7em;
+  }
+</style>

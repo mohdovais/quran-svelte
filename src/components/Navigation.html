@@ -1,0 +1,26 @@
+<nav>
+  <button on:click="next()">Next</button> {$pagingIndex}
+  <button on:click="previous()">Previous</button>
+</nav>
+
+<script>
+  export default {
+    methods: {
+      next: function(){
+        const currentState = this.store.get();
+        const nextPagingIndex = (currentState.pagingIndex + 1) % currentState.total.pages || 1;
+        this.store.set({
+          pagingIndex: nextPagingIndex
+        })
+      },
+      previous: function(){
+        const currentState = this.store.get();
+        const totalPages = currentState.total.pages;
+        const previousPagingIndex = (totalPages + currentState.pagingIndex - 1) % totalPages || totalPages - 1;
+        this.store.set({
+          pagingIndex: previousPagingIndex
+        })
+      }
+    }
+  }
+</script>

@@ -1,0 +1,28 @@
+<main>
+  <Navigation />
+  {#each $page as sura}
+  <Sura ayas={sura.data} meta={sura.meta} />
+  {/each}
+</main>
+
+
+<script>
+  import Sura from './Sura.html';
+  import Navigation from './Navigation.html';
+
+  export default {
+    components: {
+      Sura,
+      Navigation
+    },
+    oncreate: function(){
+      //debugger;
+    }
+  };
+
+  function abc(){
+    Object.keys(groups).map(function(groupName) {
+      return
+    });
+  }
+</script>

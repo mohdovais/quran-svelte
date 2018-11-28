@@ -1,0 +1,18 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../src/components/App.html",
+    "../src/components/Sura.html",
+    "../src/components/SuraHeader.html",
+    "../src/components/SuraContent.html"
+  ],
+  "sourcesContent": [
+    "<Page />\n\n<script>\n\timport Page from './Page.html';\n\n\texport default {\n\t\tcomponents: {\n\t\t\tPage\n\t\t}\n\t};\n</script>\n\n<style>\n\t:global(body) {\n\t\tbackground-color: #fdf9f0;\n\t\tcolor: #2a231b;\n\t}\n</style>\n",
+    "<article class=\"sura\" dir=\"rtl\">\n  <Header meta={meta}/>\n  <Content ayas={ayas}/>\n</article>\n\n<script>\n  import Header from './SuraHeader.html';\n  import Content from './SuraContent.html';\n\n  export default {\n    components: {\n      Header,\n      Content\n    }\n  };\n</script>\n\n<style>\n  .sura {\n    padding: 1em;\n  }\n</style>\n",
+    "<header class=\"sura-header\">\n  <h1>{meta[4]}</h1>\n  <h2>{meta[5]} | {meta[6]} | {meta[7]}</h2>\n  <h3>{bismillah}</h3>\n</header>\n\n<script>\n  import {\n    arabicBismillah as bismillah\n  } from './../bismillah';\n\n  export default {\n    data: function() {\n      return {\n        bismillah\n      }\n    }\n  }\n</script>\n\n<style>\n  header {\n    text-align: center;\n  }\n\n  h1 {\n    font-size: 3em;\n    margin: 0;\n  }\n\n  h2 {\n    color: #5c3219;\n    font-weight: 300;\n    font-size: 1em;\n  }\n\n  h3{\n    color: #ba8156;\n  }\n</style>\n",
+    "<ol class=\"ayas\" start={start} style={style}>\n  {#each ayas as aya}\n    <li>{aya.text}</li>\n  {/each}\n</ol>\n\n<script>\n  //import svg from './Aya.svg';\n  export default {\n    computed: {\n      start: function(props){\n        return props.ayas[0].aya\n      },\n      style: function(props){\n        return `counter-reset: section ${props.start - 1};`;\n      }\n    }\n  }\n</script>\n\n<style>\n  .ayas {\n    padding: 0;\n    margin: 0;\n    font-size: 150%;\n    line-height: 300%;\n    counter-reset: section;\n  }\n\n  .ayas li {\n    display: inline;\n    border-bottom: 1px dotted #e5bea1;\n    padding: 1em 0;\n  }\n\n  .ayas li::after {\n    counter-increment: section;\n    content: counter(section, arabic-indic);\n    margin: 0 0.5em;\n    width: 2em;\n    display: inline-block;\n    text-align: center;\n    background: url('resources/aya.svg') 50% 50% no-repeat;\n    font-size: 0.7em;\n  }\n</style>\n"
+  ],
+  "names": [],
+  "mappings": "AAaS,IAAI,AAAE,CAAC,AACd,gBAAgB,CAAE,OAAO,CACzB,KAAK,CAAE,OAAO,AACf,CAAC;ACEA,KAAK,eAAC,CAAC,AACL,OAAO,CAAE,GAAG,AACd,CAAC;ACCD,MAAM,eAAC,CAAC,AACN,UAAU,CAAE,MAAM,AACpB,CAAC,AAED,EAAE,eAAC,CAAC,AACF,SAAS,CAAE,GAAG,CACd,MAAM,CAAE,CAAC,AACX,CAAC,AAED,EAAE,eAAC,CAAC,AACF,KAAK,CAAE,OAAO,CACd,WAAW,CAAE,GAAG,CAChB,SAAS,CAAE,GAAG,AAChB,CAAC,AAED,iBAAE,CAAC,AACD,KAAK,CAAE,OAAO,AAChB,CAAC;ACjBD,KAAK,cAAC,CAAC,AACL,OAAO,CAAE,CAAC,CACV,MAAM,CAAE,CAAC,CACT,SAAS,CAAE,IAAI,CACf,WAAW,CAAE,IAAI,CACjB,aAAa,CAAE,OAAO,AACxB,CAAC,AAED,mBAAK,CAAC,EAAE,cAAC,CAAC,AACR,OAAO,CAAE,MAAM,CACf,aAAa,CAAE,GAAG,CAAC,MAAM,CAAC,OAAO,CACjC,OAAO,CAAE,GAAG,CAAC,CAAC,AAChB,CAAC,AAED,mBAAK,CAAC,gBAAE,OAAO,AAAC,CAAC,AACf,iBAAiB,CAAE,OAAO,CAC1B,OAAO,CAAE,QAAQ,OAAO,CAAC,CAAC,YAAY,CAAC,CACvC,MAAM,CAAE,CAAC,CAAC,KAAK,CACf,KAAK,CAAE,GAAG,CACV,OAAO,CAAE,YAAY,CACrB,UAAU,CAAE,MAAM,CAClB,UAAU,CAAE,IAAI,mBAAmB,CAAC,CAAC,GAAG,CAAC,GAAG,CAAC,SAAS,CACtD,SAAS,CAAE,KAAK,AAClB,CAAC"
+}

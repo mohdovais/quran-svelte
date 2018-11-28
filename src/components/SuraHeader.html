@@ -1,0 +1,40 @@
+<header class="sura-header">
+  <h1>{meta[4]}</h1>
+  <h2>{meta[5]} | {meta[6]} | {meta[7]}</h2>
+  <h3>{bismillah}</h3>
+</header>
+
+<script>
+  import {
+    arabicBismillah as bismillah
+  } from './../bismillah';
+
+  export default {
+    data: function() {
+      return {
+        bismillah
+      }
+    }
+  }
+</script>
+
+<style>
+  header {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3em;
+    margin: 0;
+  }
+
+  h2 {
+    color: #5c3219;
+    font-weight: 300;
+    font-size: 1em;
+  }
+
+  h3{
+    color: #ba8156;
+  }
+</style>

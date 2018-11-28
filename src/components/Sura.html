@@ -1,0 +1,22 @@
+<article class="sura" dir="rtl">
+  <Header meta={meta}/>
+  <Content ayas={ayas}/>
+</article>
+
+<script>
+  import Header from './SuraHeader.html';
+  import Content from './SuraContent.html';
+
+  export default {
+    components: {
+      Header,
+      Content
+    }
+  };
+</script>
+
+<style>
+  .sura {
+    padding: 1em;
+  }
+</style>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1,minimal-ui">
+    <meta name=mobile-web-app-capable content=yes>
+    <meta name=apple-mobile-web-app-capable content=yes>
+    <meta name=apple-mobile-web-app-status-bar-style content=#5c3219>
+    <meta name=apple-mobile-web-app-title content="Qur'an">
+    <meta name=msapplication-TileImage content=assets/images/icons/icon-144x144.png> <meta name=msapplication-TileColor
+        content=#5c3219>
+    <meta name=theme-color content=#5c3219>
+    <link rel=apple-touch-icon href=assets/images/icons/icon-152x152.png> <link rel="shortcut icon" href=favicon.ico
+        type=image/x-icon> <link rel=icon href=favicon.ico type=image/x-icon> <title>The Holy Quran</title>
+    <link rel="preload" href="public/bundle.css" as="style">
+    <link rel="preload" href="public/bundle.js" as="script">
+    <link rel="preload" href="public/resources/aya.svg" as="image">
+    <link rel="preload" href="data/quran-simple.txt" as="fetch">
+    <link rel="stylesheet" href="public/bundle.css" type="text/css">
+    <!--<link rel=manifest href=manifest.json>-->
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body,
+        html {
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+            font-weight: 400;
+            font-display: optional;
+            color: #444;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale
+        }
+
+        body {
+            color: #2a231b;
+            background-color: #fdf9f0;
+            padding: 0;
+            margin: 0
+        }
+
+        #preloader {
+            left: 50%;
+            top: 50%;
+            position: fixed;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <div id="preloader" style="background: url(public/resources/aya.svg) 50% 50% no-repeat;
+            background-size: cover;
+            width: 240px;
+            height: 310px;">Loading...</div>
+    <script src='public/bundle.js'></script>
+</body>
+
+</html>

@@ -1,3 +1,7 @@
+import {
+  assign
+} from './object';
+
 export default function ajax(config) {
   return doAJAX(getXHR(), applyConfig(config));
 }
@@ -9,11 +13,14 @@ function readyStateDone(progressEvent, config) {
 }
 
 function onReadyStateChange(progressEvent, config) {
-  return progressEvent.target.readyState === 4 && readyStateDone(progressEvent, config);
+  return (
+    progressEvent.target.readyState === 4 &&
+    readyStateDone(progressEvent, config)
+  )
 }
 
 function applyConfig(config) {
-  return Object.assign({}, config);
+  return assign({}, config);
 }
 
 function getXHR() {

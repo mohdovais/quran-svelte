@@ -1,6 +1,10 @@
 import {
     hasOwnProperty
-} from './object.js';
+} from './utils/object.js';
+import {
+    PAGING_TYPE,
+    PAGING_INDEX
+} from './constants';
 
 const location = document.location;
 const hashbang = '#!/';
@@ -31,8 +35,8 @@ function onStateChange(state) {
     const changed = state.changed;
     const current = state.current;
     if (
-        hasOwnProperty(changed, 'pagingIndex') ||
-        hasOwnProperty(changed, 'pagingType')
+        hasOwnProperty(changed, PAGING_INDEX) ||
+        hasOwnProperty(changed, PAGING_TYPE)
     ) {
         navigate(current.pagingType + '/' + current.pagingIndex);
     }

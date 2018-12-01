@@ -1,6 +1,5 @@
 import {
     Sajda,
-    Page,
     Ruku
 } from './resources/data/quran-data';
 
@@ -10,8 +9,6 @@ function reducer(meta) {
         return accum;
     }, {});
 }
-
-export const totalPages = Page.length - 1;
 
 export function uniqueAyaKey(sura, aya) {
     return `${sura}-${aya}`;

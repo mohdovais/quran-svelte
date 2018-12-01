@@ -1,23 +1,23 @@
 import {
   Store
 } from 'svelte/store.js';
-import {
-  totalPages
-} from './quran-meta';
-
 import computePage from './utils/quran/compute-page';
+import computePagesTotal from './utils/quran/compute-pages-total';
+import {
+  PAGE,
+  PAGING_TYPE,
+  PAGING_INDEX
+} from './constants';
 
 const store = new Store({
   quran: [],
-  pagingType: 'page',
+  pagingType: PAGE,
   pagingIndex: 597,
+  pagingTotal: 0,
   page: [],
-  total: {
-    pages: totalPages,
-    sura: 0
-  }
 });
 
-store.compute('page', ['quran', 'pagingType', 'pagingIndex'], computePage);
+store.compute(PAGE, ['quran', PAGING_TYPE, PAGING_INDEX], computePage);
+store.compute('pagingTotal', [PAGING_TYPE], computePagesTotal);
 
 export default store;

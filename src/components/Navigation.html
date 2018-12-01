@@ -4,21 +4,23 @@
 </nav>
 
 <script>
+  import {
+    nextIndex,
+    prevIndex
+  } from './../utils/next-back.js';
+
   export default {
     methods: {
-      next: function(){
-        const currentState = this.store.get();
-        const nextPagingIndex = (currentState.pagingIndex + 1) % currentState.total.pages || 1;
+      next: function () {
+        const state = this.store.get();
         this.store.set({
-          pagingIndex: nextPagingIndex
+          pagingIndex: nextIndex(state.pagingIndex, state.pagingTotal)
         })
       },
-      previous: function(){
-        const currentState = this.store.get();
-        const totalPages = currentState.total.pages;
-        const previousPagingIndex = (totalPages + currentState.pagingIndex - 1) % totalPages || totalPages - 1;
+      previous: function () {
+        const state = this.store.get();
         this.store.set({
-          pagingIndex: previousPagingIndex
+          pagingIndex: prevIndex(state.pagingIndex, state.pagingTotal)
         })
       }
     }

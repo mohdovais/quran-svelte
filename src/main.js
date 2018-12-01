@@ -3,7 +3,7 @@ import store from './store.js';
 import ajax, {
   getProgress,
   getError
-} from './ajax.js';
+} from './utils/ajax.js';
 import router from './router.js';
 import prepare from './utils/quran/prepare';
 

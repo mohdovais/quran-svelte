@@ -1,17 +1,17 @@
-<ol class="ayas" start={start} style={style}>
+<ol class="ayas" start={start} style={inlineStyle}>
   {#each ayas as aya}
     <li>{aya.text}</li>
   {/each}
 </ol>
 
 <script>
-  //import svg from './Aya.svg';
   export default {
     computed: {
       start: function(props){
+        console.log(props.ayas);
         return props.ayas[0].aya
       },
-      style: function(props){
+      inlineStyle: function(props){
         return `counter-reset: section ${props.start - 1};`;
       }
     }
@@ -40,7 +40,7 @@
     width: 2em;
     display: inline-block;
     text-align: center;
-    background: url('resources/aya.svg') 50% 50% no-repeat;
+    background: url('resources/aya.svg') 50% 40% no-repeat;
     font-size: 0.7em;
   }
 </style>

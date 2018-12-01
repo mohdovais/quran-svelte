@@ -1,5 +1,5 @@
 .sura.svelte-13qbysj{padding:1em}
 header.svelte-1tv5h2o{text-align:center}h1.svelte-1tv5h2o{font-size:3em;margin:0}h2.svelte-1tv5h2o{color:#5c3219;font-weight:300;font-size:1em}h3.svelte-1tv5h2o{color:#ba8156}
-.ayas.svelte-ydflzg{padding:0;margin:0;font-size:150%;line-height:300%;counter-reset:section}.ayas.svelte-ydflzg li.svelte-ydflzg{display:inline;border-bottom:1px dotted #e5bea1;padding:1em 0}.ayas.svelte-ydflzg li.svelte-ydflzg::after{counter-increment:section;content:counter(section, arabic-indic);margin:0 0.5em;width:2em;display:inline-block;text-align:center;background:url('resources/aya.svg') 50% 40% no-repeat;font-size:0.7em}
+.ayas.svelte-2up9af{padding:0;margin:0;font-size:150%;line-height:300%;counter-reset:section}.ayas.svelte-2up9af li.svelte-2up9af{display:inline;border-bottom:1px dotted #e5bea1;padding:1em 0}.ayas.svelte-2up9af li.svelte-2up9af::after{counter-increment:section;content:counter(section, arabic-indic);margin:0 0.5em;width:2em;display:inline-block;text-align:center;background:url('resources/aya.svg') 50% 50% no-repeat;font-size:0.7em}
 
 /*# sourceMappingURL=bundle.css.map */

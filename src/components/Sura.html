@@ -1,6 +1,8 @@
-<article class="sura" dir="rtl">
-  <Header meta={meta}/>
-  <Content ayas={ayas}/>
+<article dir="rtl">
+  {#if ayas[0].aya === 1}
+  <Header meta={meta} />
+  {/if}
+  <Content ayas={ayas} />
 </article>
 
 <script>
@@ -16,7 +18,8 @@
 </script>
 
 <style>
-  .sura {
+  article {
     padding: 1em;
+    font-family: 'Geeza Pro';
   }
 </style>

@@ -1,4 +1,3 @@
-import getSuraMeta from './get-sura-meta';
 import {
     Page,
     Sura
@@ -6,14 +5,7 @@ import {
 import {
     PAGE, SURA 
 } from './../../constants';
-
-function getAyaIndex(sura, aya) {
-    return doGetAyaIndex(getSuraMeta(sura), aya);
-}
-
-function doGetAyaIndex(suraMeta, aya) {
-    return suraMeta[0] + Math.min(suraMeta[1], aya - 1);
-}
+import getAyaIndex from './get-aya-index';
 
 function getPageStart(pagingType, index) {
     switch (pagingType) {
@@ -48,5 +40,4 @@ export default function getPage(array, pagingType, pagingIndex) {
         default:
             return [];
     }
-
 }

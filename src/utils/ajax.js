@@ -30,7 +30,9 @@ function getXHR() {
 
 function doAJAX(xhr, config) {
   xhr.onprogress = config.progress;
-  xhr.onreadystatechange = progressEvent => onReadyStateChange(progressEvent, config);
+  xhr.onreadystatechange = function onreadystatechange(progressEvent){
+    onReadyStateChange(progressEvent, config);
+  };
   xhr.open(config.method || 'GET', config.url, true);
   xhr.send(config.data);
   return xhr;

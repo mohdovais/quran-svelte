@@ -1,0 +1,23 @@
+<header>{title}</header>
+
+<script>
+  export default {
+    computed: {
+      title: function(props){
+        return props.suras.map(function(sura){
+          return sura.meta[4];
+        }).join(' ,')
+      }
+    }
+  }
+</script>
+
+<style>
+header{
+  padding: 0 1em;
+  color: #008000;
+  position: sticky;
+  top: 0;
+  transform: translateZ(0);
+}
+</style>

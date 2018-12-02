@@ -1,16 +1,26 @@
 <ol class="ayas" start={start} style={inlineStyle}>
   {#each ayas as aya}
-    <li>{aya.text}</li>
+  <li>
+    <span>
+      {aya.text}
+      {#if aya.sajda !== undefined}
+      <img src="public/resources/sajda.svg" alt={aya.sajda} title="Sajda" height=32>
+      {/if}
+      {#if aya.ruku}
+      <img src="public/resources/ruku.svg" alt="Ruku" title="Ruku" height=32>
+      {/if}
+    </span>
+  </li>
   {/each}
 </ol>
 
 <script>
   export default {
     computed: {
-      start: function(props){
+      start: function (props) {
         return props.ayas[0].aya
       },
-      inlineStyle: function(props){
+      inlineStyle: function (props) {
         return `counter-reset: section ${props.start - 1};`;
       }
     }
@@ -30,6 +40,11 @@
     display: inline;
     border-bottom: 1px dotted #e5bea1;
     padding: 1em 0;
+  }
+
+  .ayas li img {
+    vertical-align: middle;
+    height: 1.5em;
   }
 
   .ayas li::after {

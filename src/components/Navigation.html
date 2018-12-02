@@ -1,4 +1,6 @@
-<nav>
+<nav dir="ltr">
+  <label><input type="radio" name="pagingType" value="page"> Page</label>
+  <label><input type="radio" name="pagingType" value="sura"> Sura</label>
   <button on:click="next()">Next</button> {$pagingIndex}
   <button on:click="previous()">Previous</button>
 </nav>

@@ -1,5 +1,6 @@
-<main>
+<main dir="rtl">
   <Navigation />
+  <Header suras={$page} />
   {#each $page as sura}
   <Sura ayas={sura.data} meta={sura.meta} />
   {/each}
@@ -7,11 +8,13 @@
 
 
 <script>
+  import Header from './Header.html';
   import Sura from './Sura.html';
   import Navigation from './Navigation.html';
 
   export default {
     components: {
+      Header,
       Sura,
       Navigation
     }

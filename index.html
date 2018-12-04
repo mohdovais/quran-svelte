@@ -9,11 +9,12 @@
     <meta name=apple-mobile-web-app-capable content=yes>
     <meta name=apple-mobile-web-app-status-bar-style content=#5c3219>
     <meta name=apple-mobile-web-app-title content="Qur'an">
-    <meta name=msapplication-TileImage content=assets/images/icons/icon-144x144.png> <meta name=msapplication-TileColor
-        content=#5c3219>
+    <meta name=msapplication-TileImage content=assets/images/icons/icon-144x144.png> <meta name=msapplication-TileColor content=#5c3219>
     <meta name=theme-color content=#5c3219>
-    <link rel=apple-touch-icon href=assets/images/icons/icon-152x152.png> <link rel="shortcut icon" href=favicon.ico
-        type=image/x-icon> <link rel=icon href=favicon.ico type=image/x-icon> <title>The Holy Quran</title>
+    <link rel=apple-touch-icon href="assets/images/icons/icon-152x152.png"> 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel=icon href=favicon.ico type="image/x-icon">
+    <title>The Holy Quran</title>
     <link rel="preload" href="public/bundle.css" as="style">
     <link rel="preload" href="public/bundle.js" as="script">
     <link rel="preload" href="public/resources/aya.svg" as="image">
@@ -50,16 +51,25 @@
             position: fixed;
             -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-            text-align: center
+            text-align: center;
+            background: url(public/resources/aya.svg) 50% 50% no-repeat;
+            background-size: cover;
+            width: 240px;
+            height: 310px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        #preloader div{
+            width: 180px;
+        }
+
     </style>
 </head>
 
 <body>
-    <div id="preloader" style="background: url(public/resources/aya.svg) 50% 50% no-repeat;
-            background-size: cover;
-            width: 240px;
-            height: 310px;">Loading...</div>
+    <div id="preloader"><div>Loading...</div></div>
     <script src='public/bundle.js'></script>
 </body>
 

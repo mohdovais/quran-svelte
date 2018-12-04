@@ -10,10 +10,10 @@ import prepare from './utils/quran/prepare';
 var preloader = document.getElementById('preloader');
 
 function showMessage(message) {
-  preloader.innerHTML = message;
+  preloader.childNodes[0].innerHTML = message;
 };
 
-showMessage('connecting server to load data...');
+showMessage('connecting server...');
 
 ajax({
   url: 'data/quran-simple.txt',

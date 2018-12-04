@@ -1,19 +1,17 @@
 <ol start={start} style={inlineStyle}>
   {#each ayas as aya}
   <li>
-    {aya.text}
-    {#if aya.sajda !== undefined}
-    <img src="public/resources/sajda.svg" alt={aya.sajda} title="Sajda" height=32>
-    {/if}
-    {#if aya.ruku}
-    <img src="public/resources/ruku.svg" alt="Ruku" title="Ruku" height=32>
-    {/if}
+    <Aya aya={aya} />
   </li>
   {/each}
 </ol>
 
 <script>
+  import Aya from './Aya.html';
   export default {
+    components: {
+      Aya
+    },
     computed: {
       start: function (props) {
         return props.ayas[0].aya

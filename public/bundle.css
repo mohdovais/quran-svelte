@@ -1,6 +1,7 @@
 header.svelte-xb3y9l{padding:0 1em;color:#008000;position:sticky;top:0;transform:translateZ(0)}
 article.svelte-hl4ji2{padding:1em;font-family:'Geeza Pro'}
 header.svelte-1tv5h2o{text-align:center}h1.svelte-1tv5h2o{font-size:3em;margin:0}h2.svelte-1tv5h2o{color:#5c3219;font-weight:300;font-size:1em}h3.svelte-1tv5h2o{color:#ba8156}
-ol.svelte-14zqs84{padding:0;margin:0;font-size:150%;line-height:300%;counter-reset:section}li.svelte-14zqs84{display:inline;border-bottom:1px dotted #e5bea1;padding:1em 0}li.svelte-14zqs84::after{counter-increment:section;content:counter(section, arabic-indic);margin:0 0.5em;width:2em;display:inline-block;text-align:center;background:url('resources/aya.svg') 50% 50% no-repeat;font-size:0.7em}
+ol.svelte-arezio{padding:0;margin:0;font-size:150%;line-height:300%;counter-reset:section}li.svelte-arezio{display:inline;border-bottom:1px dotted #e5bea1;padding:1em 0}li.svelte-arezio::after{counter-increment:section;content:counter(section, arabic-indic);margin:0 0.5em;width:2em;display:inline-block;text-align:center;background:url('resources/aya.svg') 50% 50% no-repeat;font-size:0.7em}
+img.svelte-1lgkrcq{vertical-align:middle;height:1.5em}
 
 /*# sourceMappingURL=bundle.css.map */

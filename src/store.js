@@ -12,8 +12,8 @@ import {
 const store = new Store({
   quran: [],
   pagingType: PAGE,
-  pagingIndex: 597,
-  pagingTotal: 0,
+  pagingIndex: 1,
+  //pagingTotal: 0,
   page: [],
 });
 

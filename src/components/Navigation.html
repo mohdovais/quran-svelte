@@ -1,5 +1,5 @@
 <nav dir="ltr">
-  <form on:change="onChange(event)">
+  <form on:change="onChange(event)" onsubmit="return false">
     <label>
       <input type="radio" name="pagingType" value="page" checked={$pagingType===PAGE}> Page
     </label>

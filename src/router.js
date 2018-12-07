@@ -5,6 +5,9 @@ import {
     PAGING_TYPE,
     PAGING_INDEX
 } from './constants';
+import {
+    getBoundIndex
+} from './utils/quran/get-bound-index.js';
 
 const location = document.location;
 const hashbang = '#!/';
@@ -12,12 +15,13 @@ const regexr = /#!\/((page)|(sura))\/(\d+)/;
 const defaultPath = 'page/1';
 
 function onLocationChange(store) {
-    return function(hashchange){
-        var change = validate(location.hash);
-        if(change){
+    return function (hashchange) {
+        const change = validate(location.hash);
+        const pagingType = change[1];
+        if (change) {
             store.set({
-                pagingType: change[1],
-                pagingIndex: parseInt(change[4], 10)
+                pagingType,
+                pagingIndex: getBoundIndex(pagingType, change[4])
             })
         }
     }

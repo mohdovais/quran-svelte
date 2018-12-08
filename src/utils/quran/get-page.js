@@ -3,7 +3,8 @@ import {
     Sura
 } from './../../resources/data/quran-data';
 import {
-    PAGE, SURA 
+    PAGE,
+    SURA
 } from './../../constants';
 import getAyaIndex from './get-aya-index';
 

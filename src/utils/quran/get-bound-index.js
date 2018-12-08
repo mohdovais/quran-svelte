@@ -3,9 +3,9 @@ import {
     Sura
 } from './../../resources/data/quran-data';
 import {
-    PAGE, SURA
+    PAGE,
+    SURA
 } from './../../constants';
-
 
 export const totals = {
     [PAGE]: Page.length - 1,

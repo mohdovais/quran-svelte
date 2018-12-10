@@ -44,3 +44,11 @@ ajax({
     showMessage(getError(progressEvent.target));
   }
 });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+
+  navigator.serviceWorker.ready.then(function () {
+    //window.location.reload();
+  });
+}

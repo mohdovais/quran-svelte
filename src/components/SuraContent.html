@@ -40,6 +40,7 @@
 
   li::after {
     counter-increment: section;
+    content: counter(section); /* IE11 bug */
     content: counter(section, arabic-indic);
     margin: 0 0.5em;
     width: 2em;

@@ -1,6 +1,6 @@
 <ol start={start} style={inlineStyle} dir="rtl">
   {#each ayas as aya}
-  <li>
+  <li class={aya.sajda ? 'sajda' : '' }>
     <Aya aya={aya} />
   </li>
   {/each}
@@ -38,12 +38,17 @@
     padding: 1em 0;
   }
 
+  li.sajda {
+    color: red;
+  }
+
   li::after {
     counter-increment: section;
-    content: counter(section); /* IE11 bug */
+    content: counter(section);
+    /* IE11 bug */
     content: counter(section, arabic-indic);
     margin: 0 0.5em;
-    width: 2em;
+    width: 2.1em;
     display: inline-block;
     text-align: center;
     background: url('resources/aya.svg') 50% 50% no-repeat;

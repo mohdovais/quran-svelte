@@ -4,7 +4,7 @@ export function charCodesAt(str) {
     }).join(',')
 }
 
-export function charCodesFrom(str) {
+export function fromCharCodes(str) {
     return String(str).split(',').map(function (code) {
         return String.fromCharCode(code)
     }).join('')

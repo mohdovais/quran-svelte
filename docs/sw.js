@@ -1,13 +1,12 @@
 const CACHE_NAME = 'cache-and-update';
 const URL_TO_CACHE = [
     'index.html',
-    'public/bundle.css',
-    'public/bundle.js',
-    'public/resources/aya.svg',
-    'public/resources/ruku.svg',
-    'public/resources/sajda.svg',
-    'data/quran-simple.txt',
-    'favicon.ico'
+    'build/bundle.css',
+    'build/bundle.js',
+    'data/quran-uthmani.txt',
+    'favicon.ico',
+    'manifest.json',
+    'fonts/me_quran.woff'
 ]
 
 // INSTALL

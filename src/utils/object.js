@@ -7,9 +7,9 @@ function extend(obj, props) {
     return obj;
 }
 
-function _assign() {
+function objectAssign() {
     const args = arguments;
-    var target = args[0];
+    let target = args[0];
 
     for (let i = 1, l = args.length; i < l; i++) {
         target = extend(target, args[i]);
@@ -18,4 +18,4 @@ function _assign() {
     return target;
 }
 
-export const assign = Object.assign || _assign;
+export const assign = Object.assign || objectAssign;

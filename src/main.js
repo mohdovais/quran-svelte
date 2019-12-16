@@ -1,43 +1,39 @@
-import App from './components/App.html';
-import store from './store.js';
-import ajax, {
-  getProgress,
-  getError
-} from './utils/ajax.js';
-import router from './router.js';
-import prepare from './utils/quran/prepare';
+import App from "./component/App.svelte";
+import store, { ACTION_SET_SOURCE } from "./quran/store2";
+import prepare from "./quran/prepare";
+import get, { getError, getProgress } from "./utils/ajax";
+import { init } from "./router";
 
-var preloader = document.getElementById('preloader');
+const target = document.getElementById("app");
+let preloader = target.querySelector("svg");
 
-function showMessage(message) {
-  preloader.childNodes[0].innerHTML = message;
-};
+function showMessage() {}
 
-showMessage('connecting server...');
+init(store);
 
-ajax({
-  url: 'data/quran-simple.txt',
+new App({
+  target,
+  props: {
+    store
+  }
+});
+
+get({
+  url: "data/quran-uthmani.txt",
   progress: function onProgress(progressEvent) {
     showMessage(
       `loading data ${getProgress(progressEvent.loaded, progressEvent.total)}`
     );
   },
   success: function onSuccess(progressEvent) {
-
     preloader.parentNode.removeChild(preloader);
     preloader = null;
 
-    store.set({
-      quran: prepare(
-        progressEvent.target.responseText.replace(/\r?\n|\r/g, '|').split('|')
+    store.dispatch({
+      type: ACTION_SET_SOURCE,
+      source: prepare(
+        progressEvent.target.responseText.replace(/\r?\n|\r/g, "|").split("|")
       )
-    });
-
-    router.init(store);
-
-    new App({
-      target: document.body,
-      store
     });
   },
   error: function onError(progressEvent) {
@@ -45,6 +41,8 @@ ajax({
   }
 });
 
+//@TODO
+/*
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 
@@ -52,3 +50,4 @@ if ('serviceWorker' in navigator) {
     //window.location.reload();
   });
 }
+*/

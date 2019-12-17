@@ -4,7 +4,7 @@
 <head>
     <meta charset=utf-8>
     <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=viewport content="width=device-width,initial-scale=1,minimal-ui">
+    <meta name=viewport content="width=device-width,initial-scale=1,minimal-ui,viewport-fit=cover">
     <meta name=mobile-web-app-capable content=yes>
     <meta name="description" content="Simple application to read Qur'an in Arabic. Offline supported">
 
@@ -30,7 +30,8 @@
             font-display: optional;
             color: #444;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
         }
 
         body {
@@ -51,12 +52,8 @@
             src: url('fonts/me_quran-webfont.eot');
             /* IE6-IE8 */
             src: url('fonts/me_quran-webfont.eot?#iefix') format('embedded-opentype'),
-                /* url('fonts/me_quran-webfont.woff2') format('woff2'), Super Modern Browsers */
-                /* Pretty Modern Browsers */
                 url('fonts/me_quran-webfont.woff') format('woff'),
-                /* Safari, Android, iOS */
                 url('fonts/me_quran-webfont.ttf') format('truetype'),
-                /* Legacy iOS */
                 url('fonts/me_quran-webfont.svg#svgFontName') format('svg');
         }
 
@@ -83,6 +80,38 @@
         #preloader div {
             width: 180px;
         }
+
+        #app>section {
+            padding-top: env(safe-area-inset-top);
+        }
+
+        #app>section::before {
+            content: "";
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            background-color: gold;
+            border-bottom: 1px solid goldenrod;
+            padding-top: env(safe-area-inset-top);
+            z-index: 1;
+        }
+
+        #app>section>main {
+            padding-right: env(safe-area-inset-right);
+            padding-left: env(safe-area-inset-left);
+        }
+
+
+        #app>section>header {
+            padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+
+        @media (min-width: 1025px) {
+            #app>section>header {
+                padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+            }
+        }
     </style>
     <link rel="preload" href="build/bundle.css" as="style">
     <link rel="preload" href="build/bundle.js" as="script">
@@ -93,7 +122,27 @@
 
 <body>
     <div id="app">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 1625" style="left: 50%;top: 50%;position: fixed;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);width: 240px;height: 310px;"><g stroke="#5c3219" stroke-width="30"><circle r="605" cx="633" cy="822" fill="#e5bea1"></circle><circle r="510" cx="633" cy="822" fill="#f5eed2"></circle><path fill="#e5bea1" d="M625 29.833c-103.84 178.52-196.29 123.51-353.51 236.32-72.27 51.866-146.27 134.606-229.57 148.02 40.92 54.082 105.585 76.11 201.66 30.11h.041c107.37 116.17 142.759-192.06 381.379 10.33 238.62-202.39 274.009 105.84 381.379-10.33h.04c96.076 46 160.741 23.972 201.661-30.11-83.3-13.414-157.3-96.154-229.57-148.02-157.22-112.81-249.67-57.8-353.51-236.32z"></path></g><circle fill="#5c3219" r="69" cx="620" cy="266"></circle><path fill="#5c3219" d="M774.852 255.602a15.002 15.002 0 0 0-4.367 29.16c74.866 27.215 111.261 45.649 161.848 81.652a15.002 15.002 0 1 0 17.394-24.441c-52.253-37.19-92.918-57.752-168.992-85.406a15.002 15.002 0 0 0-5.883-.965zm-309.518 0a15.002 15.002 0 0 1 4.367 29.16c-74.866 27.215-111.261 45.649-161.848 81.652a15.002 15.002 0 1 1-17.394-24.441c52.254-37.19 92.918-57.752 168.992-85.406a15.002 15.002 0 0 1 5.883-.965z"></path><path stroke-width="30" stroke="#5c3219" fill="#e5bea1" d="M625 1595.167c-103.84-178.52-196.29-123.51-353.51-236.32-72.27-51.866-146.27-134.606-229.57-148.02 40.92-54.082 105.585-76.11 201.66-30.11h.041c107.37-116.17 142.759 192.06 381.379-10.33 238.62 202.39 274.009-105.84 381.379 10.33h.04c96.076-46 160.741-23.972 201.661 30.11-83.3 13.414-157.3 96.154-229.57 148.02-157.22 112.81-249.67 57.8-353.51 236.32z"></path><circle r="69" cx="620" cy="1358" fill="#5c3219"></circle><path fill="#5c3219" d="M774.852 1369.398a15.002 15.002 0 0 1-4.367-29.16c74.866-27.215 111.261-45.649 161.848-81.652a15.002 15.002 0 1 1 17.394 24.441c-52.253 37.19-92.918 57.752-168.992 85.406a15.002 15.002 0 0 1-5.883.965zm-309.518 0a15.002 15.002 0 0 0 4.367-29.16c-74.866-27.215-111.261-45.649-161.848-81.652a15.002 15.002 0 1 0-17.394 24.441c52.254 37.19 92.918 57.752 168.992 85.406a15.002 15.002 0 0 0 5.883.965z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 1625"
+            style="left: 50%;top: 50%;position: fixed;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);width: 240px;height: 310px;">
+            <g stroke="#5c3219" stroke-width="30">
+                <circle r="605" cx="633" cy="822" fill="#e5bea1"></circle>
+                <circle r="510" cx="633" cy="822" fill="#f5eed2"></circle>
+                <path fill="#e5bea1"
+                    d="M625 29.833c-103.84 178.52-196.29 123.51-353.51 236.32-72.27 51.866-146.27 134.606-229.57 148.02 40.92 54.082 105.585 76.11 201.66 30.11h.041c107.37 116.17 142.759-192.06 381.379 10.33 238.62-202.39 274.009 105.84 381.379-10.33h.04c96.076 46 160.741 23.972 201.661-30.11-83.3-13.414-157.3-96.154-229.57-148.02-157.22-112.81-249.67-57.8-353.51-236.32z">
+                </path>
+            </g>
+            <circle fill="#5c3219" r="69" cx="620" cy="266"></circle>
+            <path fill="#5c3219"
+                d="M774.852 255.602a15.002 15.002 0 0 0-4.367 29.16c74.866 27.215 111.261 45.649 161.848 81.652a15.002 15.002 0 1 0 17.394-24.441c-52.253-37.19-92.918-57.752-168.992-85.406a15.002 15.002 0 0 0-5.883-.965zm-309.518 0a15.002 15.002 0 0 1 4.367 29.16c-74.866 27.215-111.261 45.649-161.848 81.652a15.002 15.002 0 1 1-17.394-24.441c52.254-37.19 92.918-57.752 168.992-85.406a15.002 15.002 0 0 1 5.883-.965z">
+            </path>
+            <path stroke-width="30" stroke="#5c3219" fill="#e5bea1"
+                d="M625 1595.167c-103.84-178.52-196.29-123.51-353.51-236.32-72.27-51.866-146.27-134.606-229.57-148.02 40.92-54.082 105.585-76.11 201.66-30.11h.041c107.37-116.17 142.759 192.06 381.379-10.33 238.62 202.39 274.009-105.84 381.379 10.33h.04c96.076-46 160.741-23.972 201.661 30.11-83.3 13.414-157.3 96.154-229.57 148.02-157.22 112.81-249.67 57.8-353.51 236.32z">
+            </path>
+            <circle r="69" cx="620" cy="1358" fill="#5c3219"></circle>
+            <path fill="#5c3219"
+                d="M774.852 1369.398a15.002 15.002 0 0 1-4.367-29.16c74.866-27.215 111.261-45.649 161.848-81.652a15.002 15.002 0 1 1 17.394 24.441c-52.253 37.19-92.918 57.752-168.992 85.406a15.002 15.002 0 0 1-5.883.965zm-309.518 0a15.002 15.002 0 0 0 4.367-29.16c-74.866-27.215-111.261-45.649-161.848-81.652a15.002 15.002 0 1 0-17.394 24.441c52.254 37.19 92.918 57.752 168.992 85.406a15.002 15.002 0 0 0 5.883.965z">
+            </path>
+        </svg>
     </div>
     <script src='build/bundle.js'></script>
 </body>

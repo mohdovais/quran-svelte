@@ -6,7 +6,6 @@
     export let data = [];
     export let meta = {};
 
-
     $: sura = meta.position === 1 ? data.slice(1) : data;
     $: olStyle = data.length > 0 ? `counter-reset: section ${data[0].aya - 1}` : undefined;
     $: hero = data.length > 0 && data[0].aya === 1;
@@ -20,7 +19,7 @@
             <span>{meta.ename}</span>
             <span>{meta.type}</span>
         </div>
-        {#if hero}
+        {#if hero && meta.position !== 9}
         <div dir="rtl" class="bismillah">{arabicBismillahUthmani}</div>
         {/if} 
     </header>

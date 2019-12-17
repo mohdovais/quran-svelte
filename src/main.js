@@ -2,20 +2,20 @@ import App from "./component/App.svelte";
 import store, { ACTION_SET_SOURCE } from "./quran/store2";
 import prepare from "./quran/prepare";
 import get, { getError, getProgress } from "./utils/ajax";
-import { init } from "./router";
+import { initiateRouter } from "./router";
 
 const target = document.getElementById("app");
 let preloader = target.querySelector("svg");
 
-function showMessage() {}
+function showMessage(message) {
+  console.info(message);
+}
 
-init(store);
+initiateRouter(store);
 
 new App({
   target,
-  props: {
-    store
-  }
+  props: { store }
 });
 
 get({
@@ -41,10 +41,10 @@ get({
   }
 });
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
 
-  navigator.serviceWorker.ready.then(function () {
+  navigator.serviceWorker.ready.then(function() {
     //window.location.reload();
   });
 }

@@ -1,38 +1,68 @@
-const location = document.location;
-const hashbang = '#!/';
+const documentLocation = document.location;
+const HASHBANG = "#!/";
 const regexr = /#!\/(page|sura)\/(\d+)/;
-const defaultPath = 'page/1';
+const DEFAULT_PATH = "page/1";
 
 function onLocationChange(store) {
-    return function (hashchange) {
-        const change = validate(location.hash);
-        if (change) {
-            store.gotoPage({
-                pagingType: change[1],
-                pagingIndex: parseInt(change[2], 10)
-            })
-        }
+  return function(hashchange) {
+    const change = validate(documentLocation.hash);
+    if (change) {
+      store.gotoPage({
+        pagingType: change[1],
+        pagingIndex: parseInt(change[2], 10)
+      });
     }
+  };
 }
 
 function navigate(path) {
-    return (location.hash = hashbang + path);
+  const loc = path === undefined ? getCookie() || DEFAULT_PATH : path;
+  setCookie(loc);
+  //debugger;
+  return (documentLocation.hash = HASHBANG + loc);
 }
 
 function validate(hash) {
-    return regexr.exec(location.hash) || (navigate(defaultPath) && false);
+  return regexr.exec(documentLocation.hash) || (navigate() && false);
 }
 
-export function init(store) {
-    const onHashChange = onLocationChange(store);
-    onHashChange();
-    const unsubscribeStore = store.subscribe(state => {
-        navigate(state.pagingType + '/' + state.pagingIndex);
-    });
-    window.addEventListener('hashchange', onHashChange);
-
-    return function unsubscribe(){
-        unsubscribeStore();
-        window.removeEventListener('hashchange', onHashChange);
+export function initiateRouter(store) {
+  let count = 0;
+  const onHashChange = onLocationChange(store);
+  onHashChange();
+  const unsubscribeStore = store.subscribe(state => {
+    if (count !== 0) {
+      navigate(state.pagingType + "/" + state.pagingIndex);
+    } else {
+      count++;
     }
+  });
+  window.addEventListener("hashchange", onHashChange);
+
+  return function unsubscribe() {
+    unsubscribeStore();
+    window.removeEventListener("hashchange", onHashChange);
+  };
+}
+
+const COOKIE_REGEX = /^location=(.+)/;
+function getCookie() {
+  const cookie = document.cookie
+    .split(";")
+    .map(x => x.trim())
+    .filter(x => COOKIE_REGEX.test(x))
+    .join("");
+
+  if (cookie !== "") {
+    return decodeURIComponent(COOKIE_REGEX.exec(cookie)[1]);
+  }
+
+  return cookie;
+}
+
+function setCookie(loc) {
+  const secure = location.host === "localhost" ? "" : "; Secure";
+  document.cookie = `location=${encodeURIComponent(
+    loc
+  )}; SameSite=Strict${secure}`;
 }

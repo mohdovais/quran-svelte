@@ -4,7 +4,7 @@ const regexr = /#!\/(page|sura)\/(\d+)/;
 const DEFAULT_PATH = "page/1";
 
 function onLocationChange(store) {
-  return function(hashchange) {
+  return function() {
     const change = validate(documentLocation.hash);
     if (change) {
       store.gotoPage({
@@ -18,12 +18,11 @@ function onLocationChange(store) {
 function navigate(path) {
   const loc = path === undefined ? getCookie() || DEFAULT_PATH : path;
   setCookie(loc);
-  //debugger;
   return (documentLocation.hash = HASHBANG + loc);
 }
 
 function validate(hash) {
-  return regexr.exec(documentLocation.hash) || (navigate() && false);
+  return regexr.exec(hash) || (navigate() && false);
 }
 
 export function initiateRouter(store) {

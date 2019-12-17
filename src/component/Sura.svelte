@@ -1,5 +1,5 @@
 <script>
-    import { arabicBismillahUthmani, arabicBismillah } from '../quran/bismillah';
+    import { arabicBismillahUthmani } from '../quran/bismillah';
     import Ruku from './IconRuku.svelte';
     import Sajda from './IconSajda.svelte';
 

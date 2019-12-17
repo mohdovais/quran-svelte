@@ -2,6 +2,8 @@
   "name": "quran-svelte-app",
   "version": "0.0.1",
   "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-plugin-svelte3": "^2.7.3",
     "rollup": "^1.27.13",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-livereload": "^1.0.4",
@@ -14,7 +16,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public"
+    "start": "sirv public",
+    "lint": "eslint --fix src --ext .js --ext .svelte"
   },
   "dependencies": {}
 }

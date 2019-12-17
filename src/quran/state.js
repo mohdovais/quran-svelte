@@ -1,9 +1,9 @@
-import { writable } from "svelte/store";
 import { PAGE, SURA } from "./constants";
 import computePagingMeta from "./compute-paging-meta";
 import computePage from "./compute-page";
 import computePagesTotal from "./compute-pages-total";
 import { getBoundIndex } from "./get-bound-index.js";
+import prepare from './prepare';
 import { assign } from "../utils/object";
 
 export const ACTION_SET_SOURCE = 1;
@@ -16,7 +16,7 @@ const pagingTotals = {
   sura: computePagesTotal(SURA)
 };
 
-const initialState = {
+export const initialState = {
   pagingType: PAGE,
   pagingIndex: 1,
   pagingTotal: pagingTotals[PAGE],
@@ -26,11 +26,11 @@ const initialState = {
 
 let source = [];
 
-function reducer(state, action) {
+export function reducer(state, action) {
   let pagingIndex, pagingType;
   switch (action.type) {
     case ACTION_SET_SOURCE:
-      source = action.source;
+      source = prepare(action.source.replace(/\r?\n|\r/g, "|").split("|"));
       return assign({}, state, {
         page: computePage(source, state.pagingType, state.pagingIndex)
       });
@@ -47,6 +47,7 @@ function reducer(state, action) {
           page: computePage(source, pagingType, pagingIndex)
         });
       }
+      break;
     case ACTION_SET_PAGE_INDEX:
       pagingType = state.pagingType;
       pagingIndex = getBoundIndex(state.pagingType, action.pagingIndex);
@@ -56,6 +57,7 @@ function reducer(state, action) {
           page: computePage(source, pagingType, pagingIndex)
         });
       }
+      break;
     case ACTION_SET_PAGE:
       pagingType = action.pagingType;
       pagingIndex = getBoundIndex(action.pagingType, action.pagingIndex);
@@ -74,38 +76,3 @@ function reducer(state, action) {
   }
   return state;
 }
-
-function createStore() {
-  const { subscribe, update } = writable(initialState);
-  const dispatch = action => update(state => reducer(state, action));
-
-  return {
-    subscribe,
-    dispatch,
-    gotoPage: function({ pagingIndex, pagingType }) {
-      const index = pagingIndex === undefined ? 0 : 1;
-      const type = pagingType === undefined ? 0 : 2;
-
-      switch (index + type) {
-        case 1:
-          return dispatch({
-            type: ACTION_SET_PAGE_INDEX,
-            pagingIndex
-          });
-        case 2:
-          return dispatch({
-            type: ACTION_SET_PAGE_TYPE,
-            pagingType
-          });
-        case 3:
-          return dispatch({
-            type: ACTION_SET_PAGE,
-            pagingIndex,
-            pagingType
-          });
-      }
-    }
-  };
-}
-
-export default createStore();

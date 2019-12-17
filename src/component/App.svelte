@@ -13,13 +13,6 @@
             <Sura {...sura} />
         {/each}
     </main>
-    <!--
-    {#if $store.page.length > 0}
-    <footer>
-        <Nav store={store} />
-    </footer>
-    {/if}
-    -->
 </section>
 
 <style>

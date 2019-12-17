@@ -18,7 +18,7 @@ export default function computePagingMeta(pagingType) {
     case SURA:
       return (
         suraMeta ||
-        (suraMeta = Sura.reduce(function(accum, item, i) {
+        (suraMeta = Sura.reduce(function(accum, item) {
           var val = item[5];
           if (val) {
             accum.push(val);

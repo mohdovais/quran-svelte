@@ -3,7 +3,6 @@
     import resizeSelect from '../utils/resize-select.js';
     export let store;
 
-    let showDropdown = false;
     let selectPaging;
     let selectPage;
 

@@ -61,8 +61,5 @@ function getCookie() {
 }
 
 function setCookie(loc) {
-  const secure = location.host === "localhost" ? "" : "; Secure";
-  document.cookie = `location=${encodeURIComponent(
-    loc
-  )}; SameSite=Strict${secure}`;
+  document.cookie = `location=${encodeURIComponent(loc)}`;
 }

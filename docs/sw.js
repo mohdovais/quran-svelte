@@ -32,7 +32,7 @@ self.addEventListener('fetch', function (event) {
 function preCache() {
     return caches.open(CACHE_NAME)
         .then((cache) => cache.addAll(URL_TO_CACHE))
-        .then(() => skipWaiting())
+        .then(() => self.skipWaiting())
         .catch(error => console.log(error))
 }
 

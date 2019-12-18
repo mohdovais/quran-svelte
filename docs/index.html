@@ -37,6 +37,7 @@
         body {
             color: #2a231b;
             background-color: #fdf9f0;
+            font-size: 16px;
         }
 
         *,
@@ -61,24 +62,8 @@
             font-family: 'me_quran', sans-serif;
         }
 
-        #preloader {
-            left: 50%;
-            top: 50%;
-            position: fixed;
-            -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            text-align: center;
-            background: url(resources/aya.svg) 50% 50% no-repeat;
-            background-size: cover;
-            width: 240px;
-            height: 310px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #preloader div {
-            width: 180px;
+        select {
+            font-size: 100%;
         }
 
         #app>section {
@@ -101,7 +86,6 @@
             padding-right: env(safe-area-inset-right);
             padding-left: env(safe-area-inset-left);
         }
-
 
         #app>section>header {
             padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);

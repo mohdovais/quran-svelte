@@ -20,10 +20,10 @@
             <span>{meta.type}</span>
         </div>
         {#if hero && meta.position !== 9}
-        <div dir="rtl" class="bismillah">{arabicBismillahUthmani}</div>
+        <div dir="rtl" class="ar bismillah">{arabicBismillahUthmani}</div>
         {/if} 
     </header>
-    <ol start="{data[0].aya}" style="{olStyle}" dir="rtl">
+    <ol class="ar" start="{data[0].aya}" style="{olStyle}" dir="rtl">
         {#each sura as aya}
             <li id="{`${aya.sura}:${aya.aya}`}" class="{
                 [aya.ruku ? 'ruku' : '', aya.sajda ? 'sajda' : ''].join(' ')
@@ -99,6 +99,10 @@
     .bismillah {
         color: #ba8156;
         font-size: 1.5rem;
+    }
+
+    .ar {
+        font-family: 'me_quran', sans-serif;
     }
 
     ol {

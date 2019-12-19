@@ -10,13 +10,6 @@ function showMessage(message) {
   console.info(message);
 }
 
-initiateRouter(store);
-
-new App({
-  target,
-  props: { store }
-});
-
 get({
   url: "data/quran-uthmani.txt",
   progress: function onProgress(progressEvent) {
@@ -34,10 +27,9 @@ get({
   }
 });
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("sw.js");
+initiateRouter(store);
 
-  navigator.serviceWorker.ready.then(function() {
-    //window.location.reload();
-  });
-}
+new App({
+  target,
+  props: { store }
+});

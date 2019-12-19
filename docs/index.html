@@ -128,6 +128,15 @@
             </path>
         </svg>
     </div>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js");
+
+            navigator.serviceWorker.ready.then(function () {
+                //window.location.reload();
+            });
+        }
+    </script>
     <script src='build/bundle.js'></script>
 </body>
 

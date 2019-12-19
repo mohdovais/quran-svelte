@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cache-and-update';
+const CACHE_NAME = 'cache-and-update-2';
 const URL_TO_CACHE = [
     'index.html',
     'build/bundle.css',
@@ -6,25 +6,27 @@ const URL_TO_CACHE = [
     'data/quran-uthmani.txt',
     'favicon.ico',
     'manifest.json',
-    'fonts/me_quran.woff'
+    'fonts/me_quran-webfont.woff'
 ]
+
+const debug = false;
 
 // INSTALL
 self.addEventListener('install', function (event) {
-    console.log('The service worker is being installed.');
+    debug && console.log('The service worker is being installed.');
     event.waitUntil(preCache());
 });
 
 // ACTIVATE
 self.addEventListener('activate', function (event) {
-    console.log('The service worker is being activated.');
+    debug && console.log('The service worker is being activated.');
     event.waitUntil(removeOldCache());
     return self.clients.claim();
 });
 
 // FETCH
 self.addEventListener('fetch', function (event) {
-    console.log('The service worker is serving the asset.');
+    debug && console.log('The service worker is serving the asset.');
     event.respondWith(fromCache(event.request));
     event.waitUntil(updateCache(event.request));
 });
